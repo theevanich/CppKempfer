@@ -13,7 +13,7 @@ HEADERS = tdate.h ttime.h
 all: $(TARGET)
 
 $(TARGET): $(TARGET).cpp $(HEADERS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).cpp tdate.cpp ttime.cpp
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).cpp tdate.cpp ttime.cpp
 
 clean:
 	$(RM) $(TARGET)
