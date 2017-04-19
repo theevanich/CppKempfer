@@ -16,4 +16,4 @@ $(TARGET): $(TARGET).cpp $(HEADERS)
 	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).cpp tdate.cpp ttime.cpp
 
 clean:
-	$(RM) $(TARGET)
+	$(RM) $(TARGET).exe
