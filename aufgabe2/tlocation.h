@@ -1,6 +1,5 @@
 #ifndef TLOCATION_H
 #define TLOCATION_H
-#include <string>
 
 class TLocation
 {

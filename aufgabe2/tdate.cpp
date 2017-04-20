@@ -25,5 +25,5 @@ TDate::TDate(int dd, int mm, int yyyy)
 void TDate::print()
 {
     cout << setfill('0');
-    cout << setw(2) << dd << ':' << setw(2) << mm << ':' << yyyy;
+    cout << setw(2) << dd << '.' << setw(2) << mm << '.' << yyyy;
 }

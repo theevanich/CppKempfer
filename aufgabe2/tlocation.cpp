@@ -23,8 +23,22 @@ void TLocation::print()
     cout << "Abt.: " << section << "; " << "Regal: " << rack;
 }
 
-//string get_section() const;
-//string get_rack() const;
-//void set_section(string section);
-//void set_rack(string section);
+string TLocation::get_section() const
+{
+    return section;
+}
+string TLocation::get_rack() const
+{
+    return rack;
+}
+
+void TLocation::set_section(string section)
+{
+    this->section = section;
+}
+
+void TLocation::set_rack(string section)
+{
+    this->rack = rack;
+}
 
