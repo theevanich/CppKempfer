@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include "tmedium.h"
 
 using namespace std;
+
+#include "tmedium.h"

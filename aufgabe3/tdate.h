@@ -6,7 +6,7 @@ class TDate
     private:
         int dd, mm, yyyy;
         time_t now;
-        std::string date;
+        string date;
         
     public:
         TDate();

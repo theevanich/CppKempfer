@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include <string>
-#include "tperson.h"
-#include "taddress.h"
-#include "tdate.h"
 
 using namespace std;
+
+#include "taddress.h"
+#include "tdate.h"
+#include "tperson.h"
 
 TPerson::TPerson(string Name, TDate Birthday, TAddress Address)
 :Address(Address), Birthday(Birthday)

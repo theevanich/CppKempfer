@@ -6,7 +6,7 @@ using namespace std;
 #include "tlocation.h"
 #include "taddress.h"
 #include "tperson.h"
-#include "tmedium.h"
+//#include "tmedium.h"
 //#include "tlibrary.h"
 //#include "tlibrarypool.h"
 
@@ -29,10 +29,10 @@ int main()
     TPerson K1("Marion Schulz", A1, D1);
     TPerson K2("Stefan Meier", A2, D1);
 
-    TMedium M1("Programmieren in C", "PC99", L1, 0, TMedium::ausgeliehen);
-    TMedium M2("Der Hexer", "He83", L2, 12, TMedium::verfuegbar);
-    TMedium M3("Asterix und Obelix", "KC17", L3, 0, TMedium::verfuegbar);
-    TMedium M4("Der Werwolf", "WW175", L4, 16, TMedium::ausgeliehen);
+    //TMedium M1("Programmieren in C", "PC99", L1, 0, TMedium::ausgeliehen);
+    //TMedium M2("Der Hexer", "He83", L2, 12, TMedium::verfuegbar);
+    //TMedium M3("Asterix und Obelix", "KC17", L3, 0, TMedium::verfuegbar);
+    //TMedium M4("Der Werwolf", "WW175", L4, 16, TMedium::ausgeliehen);
 
 /*     TLibrary LWedding("Wedding", A1, &FL1);
     TLibrary LSteglitz("Steglitz", A2, &FL2);

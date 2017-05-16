@@ -3,8 +3,10 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
-#include "tdate.h"
+
 using namespace std;
+
+#include "tdate.h"
 
 TDate::TDate()
 {

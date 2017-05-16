@@ -4,23 +4,22 @@
 class TAddress
 {
     private:
-        std::string Street;
-        std::string Number;
-        std::string Zipcode;
-        std::string Town;
+        string Street;
+        string Number;
+        string Zipcode;
+        string Town;
         
     public:
-        TAddress(std::string, std::string, std::string, std::string);
-        std::string get_street() const;
-        std::string get_number() const;
-        std::string get_zipcode() const;
-        std::string get_town() const;
-        void set_street(std::string);
-        void set_number(std::string);
-        void set_zipcode(std::string);
-        void set_town(std::string);
+        TAddress(string, string, string, string);
+        string get_street() const;
+        string get_number() const;
+        string get_zipcode() const;
+        string get_town() const;
+        void set_street(string);
+        void set_number(string);
+        void set_zipcode(string);
+        void set_town(string);
         void print();
 };
-
 
 #endif

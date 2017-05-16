@@ -6,7 +6,7 @@ class TTime
     private:
         int hh, mm, ss;
         time_t now;
-        std::string myTime;
+        string myTime;
         
     public:
         TTime();

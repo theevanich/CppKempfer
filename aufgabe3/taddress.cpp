@@ -2,9 +2,11 @@
 
 #include <iostream>
 #include <string>
-#include "taddress.h"
 
 using namespace std;
+
+#include "taddress.h"
+
 
 TAddress::TAddress(string Street, string Number, string Zipcode, string Town)
 {

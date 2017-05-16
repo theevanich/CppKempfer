@@ -2,9 +2,10 @@
 
 #include <iostream>
 #include <string>
-#include "tlocation.h"
 
 using namespace std;
+
+#include "tlocation.h"
 
 TLocation::TLocation()
 {
