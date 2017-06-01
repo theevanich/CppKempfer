@@ -1,19 +1,19 @@
+# the compiler: gcc for C program, define as g++ for C++
+CC = g++
 
-CPP = g++
-CPPFLAGS = -g -Wall
+# compiler flags:
+#  -g    adds debugging information to the executable file
+#  -Wall turns on most, but not all, compiler warnings
+CFLAGS  = -g -Wall
 
-LD = ld
-LDFLAGS +=
+# the build target executable:
+TARGET = ueb03
+HEADERS = tdate.h ttime.h tlocation.h taddress.h tperson.h tmedium.h tlibrary.h
 
-INCLUDES="taddress.o tdate.o tlocation.o tmedium.o tperson.o ttime.o"
+all: $(TARGET)
 
-all: ueb03.elf
-
-%.elf: %.o
-	$(LD) $(LDFLAGS) $^ $(INCLUDES) -o $@
-
-%.o: %.cpp
-	$(CPP) $(CPPFLAGS) $^ -o $@
+$(TARGET): $(TARGET).cpp $(HEADERS)
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).cpp tdate.cpp ttime.cpp tlocation.cpp taddress.cpp tperson.cpp tmedium.cpp tlibrary.cpp
 
 clean:
-	rm *.o *.elf
+	$(RM) $(TARGET).exe

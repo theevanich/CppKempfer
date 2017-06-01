@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ using namespace std;
 #include "tdate.h"
 #include "tperson.h"
 
-TPerson::TPerson(string Name, TDate Birthday, TAddress Address)
+TPerson::TPerson(string Name, TAddress Address, TDate Birthday)
 :Address(Address), Birthday(Birthday)
 {
     this->Name = Name;

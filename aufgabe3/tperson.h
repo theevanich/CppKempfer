@@ -9,7 +9,7 @@ class TPerson
         TDate Birthday;
         
     public:
-        TPerson(string, TDate, TAddress);
+        TPerson(string, TAddress, TDate);
         string get_name() const;
         TAddress get_address() const;
         TDate get_birthday() const;
@@ -17,7 +17,6 @@ class TPerson
         void set_address(TAddress);
         void set_birthday(TDate);
         void print();
-        
 };
 
 #endif
