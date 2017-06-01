@@ -9,7 +9,7 @@ using namespace std;
 #include "tperson.h"
 #include "tmedium.h"
 #include "tlibrary.h"
-//#include "tlibrarypool.h"
+#include "tlibraryPool.h"
 
 int main()
 {
@@ -41,22 +41,18 @@ int main()
     
     LWedding.add(&M1);
     LWedding.add(&M2);
-
-    cout << endl;
-    LWedding.print();
-    cout << endl;
     
     LSteglitz.add(&M3);
     LSteglitz.add(&M4);
 
-    // TLibraryPool LP("Buechereiverband Berlin", &Leitung);
-    // LP.add(&LWedding);
-    // LP.add(&LSteglitz);
-    // LP.add(&K1);
-    // LP.add(&K2);
+    TLibraryPool LP("Buechereiverband Berlin", &Leitung);
+    LP.add(&LWedding);
+    LP.add(&LSteglitz);
+    LP.add(&K1);
+    LP.add(&K2);
 
-    // LP.print();
-    // cout << endl;
+    LP.print();
+    cout << endl;
 
     return 0;
 }
