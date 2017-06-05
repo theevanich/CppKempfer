@@ -1,6 +1,14 @@
 #ifndef TLIBRARYPOOL_H
 #define TLIBRARYPOOL_H
 
+#include <vector>
+#include "tdate.h"
+#include "tlocation.h"
+#include "taddress.h"
+#include "tperson.h"
+#include "tmedium.h"
+#include "tlibrary.h"
+
 class TLibraryPool
 {
     private:

@@ -6,20 +6,11 @@
 
 using namespace std;
 
-#include "tdate.h"
-#include "tlocation.h"
-#include "taddress.h"
-#include "tperson.h"
-#include "tmedium.h"
-#include "tlibrary.h"
 #include "tlibraryPool.h"
 
 TLibraryPool::TLibraryPool(string n, TPerson* p)
-:Boss(p)
-{
-    Name = n;
-    Boss = p;
-}
+:Name(n), Boss(p) {}
+
 TLibraryPool::~TLibraryPool() {}
 
 void TLibraryPool::add(TPerson* customer)

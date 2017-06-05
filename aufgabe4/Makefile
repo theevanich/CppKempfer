@@ -7,7 +7,7 @@ CC = g++
 CFLAGS  = -g -Wall
 
 # the build target executable:
-TARGET = ueb03
+TARGET = ueb04
 HEADERS = tdate.h ttime.h tlocation.h taddress.h tperson.h tmedium.h tlibrary.h tlibraryPool.h
 
 all: $(TARGET)

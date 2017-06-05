@@ -2,13 +2,13 @@
 
 using namespace std;
 
-#include "tlibrarypool.h"
+#include "tlibraryPool.h"
 
 int main()
 {
-    TLibraryPool LP("data.xml");
+    //TLibraryPool LP("data.xml");
 
-    LP.print();
+    //LP.print();
     cout << endl;
 
     return 0;
