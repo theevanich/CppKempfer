@@ -6,9 +6,10 @@ using namespace std;
 
 int main()
 {
-    //TLibraryPool LP("data.xml");
+    TLibraryPool LP("data.xml");
 
     //LP.print();
+    cout << LP.get_name();
     cout << endl;
 
     return 0;

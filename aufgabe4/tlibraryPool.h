@@ -1,6 +1,7 @@
 #ifndef TLIBRARYPOOL_H
 #define TLIBRARYPOOL_H
 
+#include <fstream>
 #include <vector>
 #include "tdate.h"
 #include "tlocation.h"
@@ -11,14 +12,20 @@
 
 class TLibraryPool
 {
+    protected:
+        string parseLine(string, string);
+
     private:
         string Name;
+        string Filename;
         TPerson *Boss;
         vector<TLibrary*> LibraryList;
         vector<TPerson*> CustomerList;
+        ifstream inFile;
 
     public:
         TLibraryPool(string, TPerson*);
+        TLibraryPool(string);
         ~TLibraryPool();
 
         void add(TLibrary*);
