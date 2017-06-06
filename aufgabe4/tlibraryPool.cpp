@@ -45,19 +45,20 @@ TLibraryPool::TLibraryPool(string xmlFile)
                              // find Pool name > save directly
                             case 0:
                                 Name = parseLine(line, tagToLookFor[i]);
-                                inFile.close();
                                 break;
                             // find Chairman > create TPerson and let it load
                             case 1:
+                                Boss = new TPerson(inFile);
                                 break;
                             // find Library > create TPerson and let it load then add to vector
                             case 2:
+                                add(new TLibrary(inFile));
                                 break;
-                            // find Customer > create TPerson and let it load
                             case 3:
+                                add(new TPerson(inFile));
                                 break;
                             default:
-                                cout << "Nothing found..." << endl;
+                                cout << "Nothing found... in LibraryPool" << endl;
                                 break;
                         }
                     }
@@ -89,19 +90,9 @@ void TLibraryPool::add(TLibrary* lib)
 string TLibraryPool::parseLine(string line, string tagToBeStriped)
 {
     string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);
-    //size_t tagEndBeginPos = line.find(tagEndBegin);
-    
-/*     cout << "tagToBeStriped:" << tagToBeStriped << endl;
-    cout << "Line: " << line << endl;
-    cout << "tagStartPos: " << tagStartPos << endl << "tagEndBeginPos:" << tagEndBeginPos << endl; 
-    cout << "tagStartPos+tagToBeStriped.length(): " << tagStartPos+tagToBeStriped.length() << endl; */
-    
+    size_t tagStartPos = line.find(tagToBeStriped);   
     int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length();
-    
-    //cout << line.substr(a, l) << endl;
-    
+    int messageStart = tagStartPos+tagToBeStriped.length();  
     return line.substr(messageStart, messageLength);
 
 }
@@ -110,8 +101,9 @@ void TLibraryPool::print()
 {
     cout << endl;
     cout << get_name() << endl;
-    cout << "Leitung" << endl;
+    cout << "Leitung: ";
     Boss->print();
+    cout << endl;
     cout << "\nZum Buecherverband gehoeren " << LibraryList.size() << " Filialen" << endl;
     for(unsigned i = 0; i < LibraryList.size(); i++)
     {
@@ -119,8 +111,9 @@ void TLibraryPool::print()
         LibraryList.at(i)->print();
         cout << endl;
     }
+    cout << endl;
     cout << "Der Buecherverband hat " << CustomerList.size() << " Kunde/Kunden" << endl;
-    for(unsigned j = 0; j < LibraryList.size(); j++)
+    for(unsigned j = 0; j < CustomerList.size(); j++)
     {
         cout << endl;
         CustomerList.at(j)->print();

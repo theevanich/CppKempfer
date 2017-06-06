@@ -3,13 +3,18 @@
 
 class TDate
 {
+    protected:
+        string parseLine(string, string);
+        
     private:
         int dd, mm, yyyy;
         time_t now;
         string date;
+        void load(ifstream&);
         
     public:
         TDate();
+        TDate(ifstream&);
         TDate(int dd, int mm, int yyyy);
         //int get_dd() const;
         //int get_mm() const;
