@@ -1,0 +1,191 @@
+<LibraryPool>
+ <Name>Buechereiverbund Berlin</Name>
+ <Chairman>
+  <Employee>
+   <Name>Egon Mustermann</Name>
+   <EmployeeNr>P007</EmployeeNr>
+   <Birthday>
+    <Date>
+     <Day>17</Day>
+     <Month>11</Month>
+     <Year>1963</Year>
+    </Date>
+   </Birthday>
+   <CustomerNr>M007</CustomerNr>
+   <Address>
+    <Street>Schlossstr.</Street>
+    <HouseNr>117</HouseNr>
+    <Zipcode>12077</Zipcode>
+    <Town>Berlin</Town>
+   </Address>
+  </Employee>
+ </Chairman>
+ <Library>
+  <Name>Wedding</Name>
+  <Address>
+   <Street>Buchallee</Street>
+   <Number>15a</Number>
+   <Zipcode>13315</Zipcode>
+   <Town>Berlin</Town>
+  </Address>
+  <Book>
+   <Author>Gerald Kempfer</Author>
+   <Pages>132</Pages>
+   <Title>Programmieren in C</Title>
+   <Signatur>PC99</Signatur>
+   <Location>
+    <Section>Technik</Section>
+    <Rack>Computer</Rack>
+   </Location>
+   <FSK>0</FSK>
+   <Status>2</Status>
+  </Book>
+  <Book>
+   <Author>Edgar Wallace</Author>
+   <Pages>248</Pages>
+   <Title>Der Hexer</Title>
+   <Signatur>He83</Signatur>
+   <Location>
+    <Section>Romane</Section>
+    <Rack>Krimi</Rack>
+   </Location>
+   <FSK>12</FSK>
+   <Status>1</Status>
+  </Book>
+  <Manager>
+   <Employee>
+    <Name>Peter Mueller</Name>
+    <EmployeeNr>P023</EmployeeNr>
+    <Birthday>
+     <Date>
+      <Day>17</Day>
+      <Month>11</Month>
+      <Year>1963</Year>
+     </Date>
+    </Birthday>
+    <Address>
+     <Street>Muellerstr.</Street>
+     <Number>39</Number>
+     <Zipcode>13309</Zipcode>
+     <Town>Berlin</Town>
+    </Address>
+   </Employee>
+  </Manager>
+ </Library>
+ <Library>
+  <Name>Steglitz</Name>
+  <Manager>
+   <Employee>
+    <Name>Erika Mueller</Name>
+    <Birthday>
+     <Date>
+      <Day>17</Day>
+      <Month>11</Month>
+      <Year>1963</Year>
+     </Date>
+    </Birthday>
+    <EmployeeNr>P014</EmployeeNr>
+    <Address>
+     <Street>Muellerstr.</Street>
+     <Number>39</Number>
+     <Zipcode>13309</Zipcode>
+     <Town>Berlin</Town>
+    </Address>
+   </Employee>
+  </Manager>
+  <Address>
+   <Street>Schlossstr.</Street>
+   <Number>117</Number>
+   <Zipcode>12077</Zipcode>
+   <Town>Berlin</Town>
+  </Address>
+  <Magazine>
+   <Designer>Albert Abstrakt</Designer>
+   <Pages>60</Pages>
+   <Title>Bilder einer Ausstellung</Title>
+   <Signatur>BA17</Signatur>
+   <Location>
+    <Rack>Magazine</Rack>
+    <Section>Kunst</Section>
+   </Location>
+   <FSK>0</FSK>
+   <Status>1</Status>
+  </Magazine>
+  <DVD>
+   <Actors>Klaus Kinski, Eddi Arend</Actors>
+   <PlayingTime>
+    <Time>
+     <Hour>1</Hour>
+     <Minute>35</Minute>
+    </Time>
+   </PlayingTime>
+   <Title>Der Werwolf</Title>
+   <Signatur>WW175</Signatur>
+    <Location>
+    <Section>DVDs</Section>
+    <Rack>Horror</Rack>
+   </Location>
+   <FSK>16</FSK>
+   <Status>2</Status>
+  </DVD>
+  <CD>
+   <Title>Bravo Hits 2015</Title>
+   <Signatur>BH2015_27</Signatur>
+   <Location>
+    <Section>CDs</Section>
+    <Rack>Musik</Rack>
+   </Location>
+   <Status>1</Status>
+   <Interpret>Verschiedene</Interpret>
+   <Tracks>21</Tracks>
+  </CD>
+  <Audiobook>
+   <Title>Der grosse Entwurf</Title>
+   <Signatur>UNI123</Signatur>
+   <Author>Stephen Hawking</Author>
+   <Location>
+    <Section>CDs</Section>
+    <Rack>Audiobuecher</Rack>
+   </Location>
+   <Status>1</Status>
+   <Interpret>Leonard Mlodinow</Interpret>
+   <Tracks>15</Tracks>
+   <Pages>560</Pages>
+   <countCDs>3</countCDs>
+  </Audiobook>
+ </Library>
+ <Customer>
+  <Name>Marion Schulz</Name>
+  <CustomerNr>S317</CustomerNr>
+  <Address>
+   <Street>Buchallee</Street>
+   <Number>23</Number>
+   <Zipcode>13315</Zipcode>
+   <Town>Berlin</Town>
+  </Address>
+  <Birthday>
+   <Date>
+    <Day>25</Day>
+    <Month>3</Month>
+    <Year>1975</Year>
+   </Date>
+  </Birthday>
+ </Customer>
+ <Customer>
+  <Name>Stefan Meier</Name>
+  <Address>
+   <Town>Berlin</Town>
+   <Zipcode>10815</Zipcode>
+   <Number>41</Number>
+   <Street>Berliner Str.</Street>
+  </Address>
+  <CustomerNr>M179</CustomerNr>
+  <Birthday>
+   <Date>
+    <Day>7</Day>
+    <Month>7</Month>
+    <Year>1977</Year>
+   </Date>
+  </Birthday>
+ </Customer>
+</LibraryPool>
