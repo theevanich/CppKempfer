@@ -75,7 +75,18 @@ TLibraryPool::TLibraryPool(string xmlFile)
     inFile.close();
 }
 
-TLibraryPool::~TLibraryPool() {}
+TLibraryPool::~TLibraryPool()
+{
+    for(unsigned i = 0; i < LibraryList.size(); i++)
+    {
+        delete LibraryList[i];
+    }
+    for(unsigned i = 0; i < CustomerList.size(); i++)
+    {
+        delete CustomerList[i];
+    }
+    delete Boss;
+}
 
 void TLibraryPool::add(TPerson* customer)
 {
@@ -89,7 +100,6 @@ void TLibraryPool::add(TLibrary* lib)
 
 string TLibraryPool::parseLine(string line, string tagToBeStriped)
 {
-    string tagEndBegin = "</";
     size_t tagStartPos = line.find(tagToBeStriped);   
     int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
     int messageStart = tagStartPos+tagToBeStriped.length();  
@@ -116,8 +126,8 @@ void TLibraryPool::print()
     {
         cout << endl;
         CustomerList.at(j)->print();
-        cout << endl;
     }
+    cout << endl;
 }
 
 void TLibraryPool::set_name(string n) {Name = n;}

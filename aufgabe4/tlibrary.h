@@ -1,6 +1,17 @@
 #ifndef TLIBRARY_H
 #define TLIBRARY_H
 
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include "tdate.h"
+#include "tlocation.h"
+#include "taddress.h"
+#include "tperson.h"
+#include "tmedium.h"
+
 class TLibrary
 {
     protected:

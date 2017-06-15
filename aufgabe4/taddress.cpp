@@ -74,7 +74,7 @@ string TAddress::parseLine(string line, string tagToBeStriped)
 
 void TAddress::print()
 {
-    cout << Street << " " << Number << endl << Zipcode << " " << Town;
+    cout << Street << " " << Number << "; " << Zipcode << " " << Town;
 }
 
 string TAddress::get_street() const {return Street;}

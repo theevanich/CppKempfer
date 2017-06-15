@@ -15,6 +15,7 @@ class TPerson
     public:
         TPerson(string, TAddress*, TDate*);
         TPerson(ifstream&);
+        ~TPerson();
         string get_name() const;
         TAddress* get_address() const;
         TDate* get_birthday() const;

@@ -75,7 +75,18 @@ TLibraryPool::TLibraryPool(string xmlFile)
     inFile.close();
 }
 
-TLibraryPool::~TLibraryPool() {}
+TLibraryPool::~TLibraryPool()
+{
+    for(unsigned i = 0; i < LibraryList.size(); i++)
+    {
+        delete LibraryList[i];
+    }
+    for(unsigned i = 0; i < CustomerList.size(); i++)
+    {
+        delete CustomerList[i];
+    }
+    delete Boss;
+}
 
 void TLibraryPool::add(TPerson* customer)
 {
@@ -116,8 +127,8 @@ void TLibraryPool::print()
     {
         cout << endl;
         CustomerList.at(j)->print();
-        cout << endl;
     }
+    cout << endl;
 }
 
 void TLibraryPool::set_name(string n) {Name = n;}

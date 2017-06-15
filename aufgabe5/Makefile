@@ -8,12 +8,12 @@ CFLAGS  = -g -Wall
 
 # the build target executable:
 TARGET = ueb05
-HEADERS = tdate.h ttime.h tlocation.h taddress.h tperson.h tmedium.h tlibrary.h tlibraryPool.h
+HEADERS = tdate.h ttime.h tlocation.h taddress.h tperson.h tmedium.h tlibrary.h tlibraryPool.h tcustomer.h
 
 all: $(TARGET)
 
 $(TARGET): $(TARGET).cpp $(HEADERS)
-	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).cpp tdate.cpp ttime.cpp tlocation.cpp taddress.cpp tperson.cpp tmedium.cpp tlibrary.cpp tlibraryPool.cpp
+	$(CC) $(CFLAGS) -o $(TARGET).exe $(TARGET).cpp tdate.cpp ttime.cpp tlocation.cpp taddress.cpp tperson.cpp tmedium.cpp tlibrary.cpp tlibraryPool.cpp tcustomer.cpp
 
 clean:
 	$(RM) $(TARGET).exe

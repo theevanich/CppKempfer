@@ -78,6 +78,6 @@ string TDate::parseLine(string line, string tagToBeStriped)
 
 void TDate::print()
 {
-    cout << setfill('0');
+    cout.fill('0');
     cout << setw(2) << dd << '.' << setw(2) << mm << '.' << yyyy;
 }

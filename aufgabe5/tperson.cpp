@@ -59,6 +59,11 @@ void TPerson::load(ifstream& inFile)
     }
 }
 
+TPerson::~TPerson()
+{
+    cout << "Die Person " << Name << " wird vernichtet!" << endl;
+}
+
 string TPerson::parseLine(string line, string tagToBeStriped)
 {
     string tagEndBegin = "</";
@@ -78,8 +83,9 @@ void TPerson::set_address(TAddress* Address) {this->Address = Address;}
 
 void TPerson::print()
 {
-    cout << Name << endl;
-    Address->print();
-    cout << endl << "* ";
+    cout << Name;
+    cout << " *";
     Birthday->print();
+    cout << endl;
+    Address->print(); 
 }

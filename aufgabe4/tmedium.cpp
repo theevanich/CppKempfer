@@ -71,7 +71,6 @@ void TMedium::load(ifstream& inFile)
 
 string TMedium::parseLine(string line, string tagToBeStriped)
 {
-    string tagEndBegin = "</";
     size_t tagStartPos = line.find(tagToBeStriped);
     int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
     int messageStart = tagStartPos+tagToBeStriped.length(); 
@@ -82,16 +81,16 @@ void TMedium::set_status(int statusInt)
 {
     switch(statusInt)
     {
-        case 0:
+        case TMedium::verfuegbar:
             status = TMedium::verfuegbar;
             break;
-        case 1:
+        case TMedium::ausgeliehen:
             status = TMedium::ausgeliehen;
             break;
-        case 2:
+        case TMedium::bestellt:
             status = TMedium::bestellt;
             break;
-        case 3:
+        case TMedium::reserviert:
             status = TMedium::reserviert;
             break;            
         default:

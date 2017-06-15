@@ -70,7 +70,15 @@ string TLibrary::parseLine(string line, string tagToBeStriped)
     return line.substr(messageStart, messageLength);
 }
 
-TLibrary::~TLibrary() {}
+TLibrary::~TLibrary()
+{
+    for(unsigned i = 0; i < MediumList.size(); i++)
+    {
+        delete MediumList[i];
+    }
+    delete address;
+    delete Manager;
+}
 
 void TLibrary::add(TMedium *medium)
 {

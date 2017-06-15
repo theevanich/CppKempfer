@@ -7,7 +7,7 @@ class TMedium
         string parseLine(string, string);
         
     public:
-        enum Status {verfuegbar, ausgeliehen, bestellt, reserviert};
+        enum Status {verfuegbar = 1, ausgeliehen, bestellt, reserviert};
 
     private:
         string Name;

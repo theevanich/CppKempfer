@@ -1,16 +1,7 @@
-// class TLibrary
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
+// class TLibrar
 
 using namespace std;
 
-#include "tdate.h"
-#include "tlocation.h"
-#include "taddress.h"
-#include "tperson.h"
-#include "tmedium.h"
 #include "tlibrary.h"
 
 TLibrary::TLibrary(string name, TAddress* address, TPerson* Person )
@@ -63,14 +54,21 @@ void TLibrary::load(ifstream& inFile)
 
 string TLibrary::parseLine(string line, string tagToBeStriped)
 {
-    string tagEndBegin = "</";
     size_t tagStartPos = line.find(tagToBeStriped);
     int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
     int messageStart = tagStartPos+tagToBeStriped.length(); 
     return line.substr(messageStart, messageLength);
 }
 
-TLibrary::~TLibrary() {}
+TLibrary::~TLibrary()
+{
+    for(unsigned i = 0; i < MediumList.size(); i++)
+    {
+        delete MediumList[i];
+    }
+    delete address;
+    delete Manager;
+}
 
 void TLibrary::add(TMedium *medium)
 {
