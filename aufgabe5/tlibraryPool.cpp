@@ -1,16 +1,10 @@
 // class TLibraryPool
-
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-
 using namespace std;
 
 #include "tlibraryPool.h"
 
-TLibraryPool::TLibraryPool(string n, TPerson* p)
-:Name(n), Boss(p) {}
+// TLibraryPool::TLibraryPool(string n, TPerson* p)
+// :Name(n), Boss(p) {}
 
 TLibraryPool::TLibraryPool(string xmlFile)
 :Filename(xmlFile)
@@ -44,18 +38,24 @@ TLibraryPool::TLibraryPool(string xmlFile)
                         {
                              // find Pool name > save directly
                             case 0:
+                                cout << "found Pool Name" << endl;
                                 Name = parseLine(line, tagToLookFor[i]);
                                 break;
                             // find Chairman > create TPerson and let it load
                             case 1:
-                                Boss = new TPerson(inFile);
+                                cout << "found Chairman" << endl;
+                                Boss = new TEmployee(inFile);
+                                cout << "Closing file" << endl;
+                                inFile.close();
                                 break;
                             // find Library > create TPerson and let it load then add to vector
                             case 2:
-                                add(new TLibrary(inFile));
+                                // cout << "found Library" << endl;
+                                // add(new TLibrary(inFile));
                                 break;
                             case 3:
-                                add(new TPerson(inFile));
+                                // cout << "found Customer" << endl;
+                                // add(new TPerson(inFile));
                                 break;
                             default:
                                 cout << "Nothing found... in LibraryPool" << endl;
@@ -71,21 +71,22 @@ TLibraryPool::TLibraryPool(string xmlFile)
         cout << "Error opening file!" << endl;
     }
     
-    cout << "Closing file" << endl;
-    inFile.close();
+    // cout << "Closing file" << endl;
+    // inFile.close();
 }
 
 TLibraryPool::~TLibraryPool()
 {
-    for(unsigned i = 0; i < LibraryList.size(); i++)
-    {
-        delete LibraryList[i];
-    }
-    for(unsigned i = 0; i < CustomerList.size(); i++)
-    {
-        delete CustomerList[i];
-    }
-    delete Boss;
+    // for(unsigned i = 0; i < LibraryList.size(); i++)
+    // {
+        // delete LibraryList[i];
+    // }   
+
+    // for(unsigned i = 0; i < CustomerList.size(); i++)
+    // {
+        // delete CustomerList[i];
+    // }
+    // delete Boss;        
 }
 
 void TLibraryPool::add(TPerson* customer)
@@ -98,15 +99,6 @@ void TLibraryPool::add(TLibrary* lib)
     LibraryList.push_back(lib);
 }
 
-string TLibraryPool::parseLine(string line, string tagToBeStriped)
-{
-    string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);   
-    int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length();  
-    return line.substr(messageStart, messageLength);
-}
-
 void TLibraryPool::print()
 {
     cout << endl;
@@ -115,28 +107,28 @@ void TLibraryPool::print()
     Boss->print();
     cout << endl;
     cout << "\nZum Buecherverband gehoeren " << LibraryList.size() << " Filialen" << endl;
-    for(unsigned i = 0; i < LibraryList.size(); i++)
-    {
-        cout << endl;
-        LibraryList.at(i)->print();
-        cout << endl;
-    }
-    cout << endl;
-    cout << "Der Buecherverband hat " << CustomerList.size() << " Kunde/Kunden" << endl;
-    for(unsigned j = 0; j < CustomerList.size(); j++)
-    {
-        cout << endl;
-        CustomerList.at(j)->print();
-    }
+    // for(unsigned i = 0; i < LibraryList.size(); i++)
+    // {
+        // cout << endl;
+        // LibraryList.at(i)->print();
+        // cout << endl;
+    // }
+    // cout << endl;
+    // cout << "Der Buecherverband hat " << CustomerList.size() << " Kunde/Kunden" << endl;
+    // for(unsigned j = 0; j < CustomerList.size(); j++)
+    // {
+        // cout << endl;
+        // CustomerList.at(j)->print();
+    // }
     cout << endl;
 }
 
 void TLibraryPool::set_name(string n) {Name = n;}
-void TLibraryPool::set_boss(TPerson* b) {Boss = b;}
+void TLibraryPool::set_boss(TEmployee* b) {Boss = b;}
 void TLibraryPool::set_customer(vector<TPerson*> cus) {CustomerList = cus;}
 void TLibraryPool::set_libraryList(vector<TLibrary*>lib) {LibraryList = lib;}
 
 string TLibraryPool::get_name() const {return Name;}
-TPerson* TLibraryPool::get_boss() const {return Boss;}
+TEmployee* TLibraryPool::get_boss() const {return Boss;}
 vector<TPerson*>TLibraryPool::get_customerList() const {return CustomerList;}
 vector<TLibrary*>TLibraryPool::get_libraryList() const {return LibraryList;}

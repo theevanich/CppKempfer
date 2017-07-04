@@ -1,6 +1,8 @@
 #ifndef TLIBRARYPOOL_H
 #define TLIBRARYPOOL_H
 
+#include <iostream>
+#include <string>
 #include <fstream>
 #include <vector>
 #include "tdate.h"
@@ -9,16 +11,18 @@
 #include "tperson.h"
 #include "tmedium.h"
 #include "tlibrary.h"
+#include "temployee.h"
+#include "tcustomer.h"
+#include "xml.h"
 
 class TLibraryPool
 {
     protected:
-        string parseLine(string, string);
 
     private:
         string Name;
         string Filename;
-        TPerson *Boss;
+        TEmployee *Boss;
         vector<TLibrary*> LibraryList;
         vector<TPerson*> CustomerList;
         ifstream inFile;
@@ -33,12 +37,12 @@ class TLibraryPool
         void print();
 
         void set_name(string);
-        void set_boss(TPerson*);
+        void set_boss(TEmployee*);
         void set_customer(vector<TPerson*>);
         void set_libraryList(vector<TLibrary*>);
 
         string get_name() const;
-        TPerson* get_boss() const;
+        TEmployee* get_boss() const;
         vector <TLibrary*> get_libraryList() const;
         vector <TPerson*> get_customerList() const;
 };

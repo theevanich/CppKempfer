@@ -1,10 +1,4 @@
 // class tdate
-#include <fstream>
-#include <iostream>
-#include <ctime>
-#include <iomanip>
-#include <cstdlib>
-
 using namespace std;
 
 #include "tdate.h"
@@ -29,6 +23,8 @@ TDate::TDate(ifstream& inFile)
 {
     load(inFile);
 }
+
+TDate::~TDate() {}
 
 void TDate::load(ifstream& inFile)
 {
@@ -65,15 +61,6 @@ void TDate::load(ifstream& inFile)
             }
         }
     }
-}
-
-string TDate::parseLine(string line, string tagToBeStriped)
-{
-    string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);
-    int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length(); 
-    return line.substr(messageStart, messageLength);
 }
 
 void TDate::print()

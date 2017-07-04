@@ -1,8 +1,4 @@
 // class TAddresse
-#include <fstream>
-#include <iostream>
-#include <string>
-
 using namespace std;
 
 #include "taddress.h"
@@ -21,9 +17,11 @@ TAddress::TAddress(ifstream& inFile)
     load(inFile);
 }
 
+TAddress::~TAddress() {}
+
 void TAddress::load(ifstream& inFile)
 {
-    string tagToLookFor[] = {"<Street>", "<Number>", "<Zipcode>", "<Town>"};
+    string tagToLookFor[] = {"<Street>", "<Number>", "HouseNr", "<Zipcode>", "<Town>"};
     int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
     string line;
     
@@ -47,9 +45,12 @@ void TAddress::load(ifstream& inFile)
                         Number = parseLine(line, tagToLookFor[i]);
                         break;
                     case 2:
+                        Number = parseLine(line, tagToLookFor[i]);
+                        break;                      
+                    case 3:
                         Zipcode = parseLine(line, tagToLookFor[i]);
                         break;
-                    case 3:
+                    case 4:
                         Town = parseLine(line, tagToLookFor[i]);
                         break;
                     default:
@@ -60,17 +61,6 @@ void TAddress::load(ifstream& inFile)
         }
     }
 }
-
-
-string TAddress::parseLine(string line, string tagToBeStriped)
-{
-    string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);
-    int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length(); 
-    return line.substr(messageStart, messageLength);
-}
-
 
 void TAddress::print()
 {

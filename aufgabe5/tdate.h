@@ -1,10 +1,16 @@
 #ifndef TDATE_H
 #define TDATE_H
 
+#include <fstream>
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+#include <cstdlib>
+#include "xml.h"
+
 class TDate
 {
     protected:
-        string parseLine(string, string);
         
     private:
         int dd, mm, yyyy;
@@ -16,6 +22,7 @@ class TDate
         TDate();
         TDate(ifstream&);
         TDate(int dd, int mm, int yyyy);
+        ~TDate();
         //int get_dd() const;
         //int get_mm() const;
         //int get_yyyy() const;

@@ -1,10 +1,15 @@
 #ifndef TADDRESS_H
 #define TADDRESS_H
 
+#include <fstream>
+#include <iostream>
+#include <string>
+#include "xml.h"
+
 class TAddress
 {
     protected:
-        string parseLine(string, string);
+        // string parseLine(string, string);
         
     private:
         string Street;
@@ -16,6 +21,7 @@ class TAddress
     public:
         TAddress(string, string, string, string);
         TAddress(ifstream&);
+        ~TAddress();
         string get_street() const;
         string get_number() const;
         string get_zipcode() const;

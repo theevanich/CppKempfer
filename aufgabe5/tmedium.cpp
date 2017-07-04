@@ -59,7 +59,7 @@ void TMedium::load(ifstream& inFile)
                         break;
                     case 4:
                         set_status(atoi(parseLine(line, tagToLookFor[i]).c_str()));
-                        break;      
+                        break;
                     default:
                         cout << "Nothing found... in Medium" << endl;
                         break;
