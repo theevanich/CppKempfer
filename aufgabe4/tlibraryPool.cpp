@@ -30,6 +30,7 @@ TLibraryPool::TLibraryPool(string xmlFile)
         {
             while (getline(inFile, line))
             {
+                cout << "Line: " << line << endl; 
                 // detect end of xml to prevent any problems
                 if (line.find("</LibraryPool>") != string::npos)
                 {

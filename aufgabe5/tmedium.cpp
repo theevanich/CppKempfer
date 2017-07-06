@@ -1,27 +1,22 @@
 // class TMedium
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <cstdlib>
 
 using namespace std;
 
-#include "tlocation.h"
 #include "tmedium.h"
 
-TMedium::TMedium(string Name, string Signature, TLocation* Location, int FSK, Status status)
-:Name(Name), Signature(Signature), Location(Location), FSK(FSK)
-{
-    set_status(status);
-}
+// TMedium::TMedium(string Name, string Signature, TLocation* Location, int FSK, Status status)
+// :Name(Name), Signature(Signature), Location(Location), FSK(FSK)
+// {
+    // set_status(status);
+// }
 
 TMedium::~TMedium()
 {
     cout << "Das Medium " << Name << " mit der Signatur " << Signature << " wird vernichtet!" << endl;
 }
 
-TMedium::TMedium(ifstream& inFile)
+TMedium::TMedium(ifstream& inFile, streampos endPos)
+:endPos(endPos)
 {
     load(inFile);
 }
@@ -31,13 +26,14 @@ void TMedium::load(ifstream& inFile)
     string tagToLookFor[] = {"<Title>", "<Signatur>", "<Location>", "<FSK>", "<Status>"};
     int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
     string line;
-    
+    startPos = inFile.tellg();
+    // cout << "Medium Start Position: " << startPos << endl;
     while (getline(inFile, line))
     {
-        // detect end of Medium to prevent any problems
-        if (line.find("</Medium>") != string::npos)
+        if (inFile.tellg() == endPos)
         {
-            break;
+            cout << "END OF Medium DETECTED" << endl;
+            break;   
         }
         for(int i = 0; i < maxTag; i++)
         {
@@ -47,6 +43,7 @@ void TMedium::load(ifstream& inFile)
                 {
                     case 0:
                         Name = parseLine(line, tagToLookFor[i]);
+                        // cout << "Title found: " << Name << endl;
                         break;
                     case 1:
                         Signature = parseLine(line, tagToLookFor[i]);
@@ -69,29 +66,21 @@ void TMedium::load(ifstream& inFile)
     }
 }
 
-string TMedium::parseLine(string line, string tagToBeStriped)
-{
-    string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);
-    int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length(); 
-    return line.substr(messageStart, messageLength);
-}
 
 void TMedium::set_status(int statusInt)
 {
     switch(statusInt)
     {
-        case 0:
+        case 1:
             status = TMedium::verfuegbar;
             break;
-        case 1:
+        case 2:
             status = TMedium::ausgeliehen;
             break;
-        case 2:
+        case 3:
             status = TMedium::bestellt;
             break;
-        case 3:
+        case 4:
             status = TMedium::reserviert;
             break;            
         default:
@@ -106,6 +95,7 @@ void TMedium::set_signature(string s) { Signature = s; }
 void TMedium::set_FSK(int age) { FSK = age;}
 void TMedium::set_location(TLocation* location) { Location = location; }
 
+streampos TMedium::get_fpos() const {return startPos;}
 string TMedium::get_name() const { return Name; }
 string TMedium::get_signature() const {return Signature;}
 int TMedium::get_FSK() const {return FSK;}
@@ -128,7 +118,6 @@ string TMedium::get_status() const
 
 void TMedium::print()
 {
-    //char tmp = cout.fill();
     cout.fill(' ');
     cout << setw(10) << left << "Titel: "<< get_name() << endl;
     cout << setw(10) << left << "Signatur: " << get_signature() << endl;

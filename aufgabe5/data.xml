@@ -14,7 +14,7 @@
    <CustomerNr>M007</CustomerNr>
    <Address>
     <Street>Schlossstr.</Street>
-    <HouseNr>117</HouseNr>
+    <HouseNr>177</HouseNr>
     <Zipcode>12077</Zipcode>
     <Town>Berlin</Town>
    </Address>
@@ -128,17 +128,6 @@
    <FSK>16</FSK>
    <Status>2</Status>
   </DVD>
-  <CD>
-   <Title>Bravo Hits 2015</Title>
-   <Signatur>BH2015_27</Signatur>
-   <Location>
-    <Section>CDs</Section>
-    <Rack>Musik</Rack>
-   </Location>
-   <Status>1</Status>
-   <Interpret>Verschiedene</Interpret>
-   <Tracks>21</Tracks>
-  </CD>
   <Audiobook>
    <Title>Der grosse Entwurf</Title>
    <Signatur>UNI123</Signatur>
@@ -153,6 +142,17 @@
    <Pages>560</Pages>
    <countCDs>3</countCDs>
   </Audiobook>
+  <CD>
+   <Title>Bravo Hits 2015</Title>
+   <Signatur>BH2015_27</Signatur>
+   <Location>
+    <Section>CDs</Section>
+    <Rack>Musik</Rack>
+   </Location>
+   <Status>1</Status>
+   <Interpret>Verschiedene</Interpret>
+   <Tracks>21</Tracks>
+  </CD>
  </Library>
  <Customer>
   <Name>Marion Schulz</Name>

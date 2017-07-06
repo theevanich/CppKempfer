@@ -21,7 +21,7 @@ TAddress::~TAddress() {}
 
 void TAddress::load(ifstream& inFile)
 {
-    string tagToLookFor[] = {"<Street>", "<Number>", "HouseNr", "<Zipcode>", "<Town>"};
+    string tagToLookFor[] = {"<Street>", "<Number>", "<HouseNr>", "<Zipcode>", "<Town>"};
     int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
     string line;
     

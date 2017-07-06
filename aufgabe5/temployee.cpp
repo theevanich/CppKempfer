@@ -4,10 +4,8 @@ using namespace std;
 
 #include "temployee.h"
 
-TEmployee::TEmployee(ifstream& inFile)
-:TPerson(inFile),
- TCustomer(inFile),
- EmployeeNr("undefined")
+TEmployee::TEmployee(ifstream& inFile, streampos endPos)
+:TPerson(inFile, endPos), TCustomer(inFile, endPos), EmployeeNr("undefined"), endPos(endPos)
 {
     load(inFile);
 }
@@ -16,13 +14,18 @@ void TEmployee::load(ifstream& inFile)
 {
     string tagToLookFor = "<EmployeeNr>";
     string line;
+    inFile.seekg(TPerson::get_fpos());
     while (getline(inFile, line))
     {
-        cout << endl;
-        cout << line;
+        if (inFile.tellg() == endPos)
+        {
+            cout << "END OF Employee DETECTED" << endl;
+            break;   
+        }
         if (line.find(tagToLookFor) != string::npos)
         {
-            CustomerNr = parseLine(line, tagToLookFor);
+            EmployeeNr = parseLine(line, tagToLookFor);
+            inFile.seekg(endPos);
             break;
         }
     }

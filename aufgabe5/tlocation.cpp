@@ -1,8 +1,4 @@
 // class TLocation
-#include <fstream>
-#include <iostream>
-#include <string>
-
 using namespace std;
 
 #include "tlocation.h"
@@ -58,14 +54,6 @@ void TLocation::load(ifstream& inFile)
     }
 }
 
-string TLocation::parseLine(string line, string tagToBeStriped)
-{
-    string tagEndBegin = "</";
-    size_t tagStartPos = line.find(tagToBeStriped);
-    int messageLength = line.length() - ((tagStartPos + 1) + (tagToBeStriped.length() * 2) + 1);
-    int messageStart = tagStartPos+tagToBeStriped.length(); 
-    return line.substr(messageStart, messageLength);
-}
 
 void TLocation::print()
 {

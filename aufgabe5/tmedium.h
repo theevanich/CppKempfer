@@ -1,28 +1,37 @@
 #ifndef TMEDIUM_H
 #define TMEDIUM_H
 
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cstdlib>
+
+#include "tlocation.h"
+#include "xml.h"
+
 class TMedium
 {
     protected:
-        string parseLine(string, string);
         
     public:
-        enum Status {verfuegbar, ausgeliehen, bestellt, reserviert};
+        enum Status {verfuegbar = 1, ausgeliehen, bestellt, reserviert};
 
     private:
         string Name;
         string Signature;
         TLocation* Location;
-        int FSK;
+        int FSK = 0;
         Status status;
         void load(ifstream&);
+        streampos startPos, endPos;
         
     public:
         TMedium();
-        ~TMedium();
-        TMedium(string, string, TLocation*, int, Status);
-        TMedium(ifstream&);
-        void print();
+        virtual ~TMedium();
+        // TMedium(string, string, TLocation*, int, Status);
+        TMedium(ifstream&, streampos);
+        virtual void print();
         
         void set_status(Status);
         void set_status(int);
@@ -31,6 +40,7 @@ class TMedium
         void set_FSK(int);
         void set_location(TLocation*);
         
+        streampos get_fpos() const;
         string get_status() const;
         string get_name() const;
         string get_signature() const;

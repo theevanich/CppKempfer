@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+
 #include "tdate.h"
 #include "tlocation.h"
 #include "taddress.h"
@@ -24,7 +25,7 @@ class TLibraryPool
         string Filename;
         TEmployee *Boss;
         vector<TLibrary*> LibraryList;
-        vector<TPerson*> CustomerList;
+        vector<TCustomer*> CustomerList;
         ifstream inFile;
 
     public:
@@ -33,17 +34,17 @@ class TLibraryPool
         ~TLibraryPool();
 
         void add(TLibrary*);
-        void add(TPerson*);
+        void add(TCustomer*);
         void print();
 
         void set_name(string);
         void set_boss(TEmployee*);
-        void set_customer(vector<TPerson*>);
+        void set_customer(vector<TCustomer*>);
         void set_libraryList(vector<TLibrary*>);
 
         string get_name() const;
         TEmployee* get_boss() const;
         vector <TLibrary*> get_libraryList() const;
-        vector <TPerson*> get_customerList() const;
+        vector <TCustomer*> get_customerList() const;
 };
 #endif // TLIBRARYPOOL

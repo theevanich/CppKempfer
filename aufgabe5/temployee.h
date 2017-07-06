@@ -26,14 +26,17 @@ class TEmployee: public TCustomer, virtual public TPerson
     protected:
         string EmployeeNr;
         
+    private:
+        streampos endPos;
+        
     public:
-        TEmployee(string, TAddress*, TDate*, string);
+        // TEmployee(string, TAddress*, TDate*, string);
 
         /**
          * @brief Create TEmployee by importing from XML node
          * @param XML node to import
          */
-        TEmployee(ifstream&);
+        TEmployee(ifstream&, streampos);
         void load(ifstream&);
         ~TEmployee();
         void print();

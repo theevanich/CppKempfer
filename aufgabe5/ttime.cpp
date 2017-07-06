@@ -1,9 +1,4 @@
 // class TTime
-
-#include <iostream>
-#include <iomanip>
-#include <ctime>
-
 using namespace std;
 
 #include "ttime.h"
@@ -29,6 +24,48 @@ TTime::TTime(int hh, int mm, int ss)
     this->hh = hh;
     this->mm = mm;
     this->ss = ss;
+}
+
+TTime::TTime(ifstream& inFile)
+{
+    load(inFile);
+}
+
+void TTime::load(ifstream& inFile)
+{
+    string tagToLookFor[] = {"<Hour>", "<Minute>", "<Second>"};
+    int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
+    string line;
+    
+    while (getline(inFile, line))
+    {
+        // detect end of Date to prevent any problems
+        if (line.find("</Time>") != string::npos)
+        {
+            break;
+        }
+        for(int i = 0; i < maxTag; i++)
+        {
+            if (line.find(tagToLookFor[i]) != string::npos )
+            {
+                switch(i)
+                {
+                    case 0:
+                        hh = atoi(parseLine(line, tagToLookFor[i]).c_str());
+                        break;
+                    case 1:
+                        mm = atoi(parseLine(line, tagToLookFor[i]).c_str());
+                        break;
+                    case 2:
+                        ss = atoi(parseLine(line, tagToLookFor[i]).c_str());
+                        break;
+                    default:
+                        cout << "Nothing found... in Date" << endl;
+                        break;
+                }
+            }
+        }
+    }    
 }
 
 int TTime::get_hh() const
@@ -64,6 +101,6 @@ void TTime::set_ss(int ss)
 
 void TTime::print()
 {
-    cout << setfill('0');
-    cout << setw(2) << hh << ':' << setw(2) << mm << ':' << setw(2) << ss;
+    cout.fill('0');
+    cout << setw(2) << right << hh << ':' << setw(2) << right << mm << ':' << setw(2) << right << ss;
 }

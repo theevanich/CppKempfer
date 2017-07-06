@@ -14,8 +14,11 @@ class TCustomer: virtual public TPerson
     protected:
         string CustomerNr;
 
+    private:
+        streampos endPos;
+        
     public:
-        TCustomer(ifstream&);
+        TCustomer(ifstream&, streampos);
         void load(ifstream&);
         virtual ~TCustomer();
         virtual void print();

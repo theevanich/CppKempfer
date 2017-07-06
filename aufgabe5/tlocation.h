@@ -1,10 +1,15 @@
 #ifndef TLOCATION_H
 #define TLOCATION_H
 
+#include <fstream>
+#include <iostream>
+#include <string>
+
+#include "xml.h"
+
 class TLocation
 {
     protected:
-        string parseLine(string, string);
         
     private:
         string section;
