@@ -36,11 +36,12 @@ class TLibrary
         TLibrary(string, TAddress*, TEmployee*);
         TLibrary(ifstream&);
         ~TLibrary();
+        TMedium* getMediumBySignature(string);
         void setName(string);
         void setAddress(TAddress*);
         void setManager(TEmployee*);
         void setMediumList(vector<TMedium*>);
-        void print();
+        void print();    
 
         string get_name() const;
         TAddress* get_address() const;
@@ -49,6 +50,5 @@ class TLibrary
         void add(TMedium*);
 
 };
-
 
 #endif // TLibrary_h

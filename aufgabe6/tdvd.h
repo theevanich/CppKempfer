@@ -15,6 +15,7 @@ class TDVD: public TMedium
     string Actors;
     TTime  *PlayingTime;
     streampos startPos, endPos;
+    bool   print_parents = true;
 
   public:
     /**
@@ -25,6 +26,7 @@ class TDVD: public TMedium
     void load(ifstream&);
     ~TDVD();
     void print();
+    friend ostream& operator<<(ostream&, TDVD&);
 };
 
 #endif

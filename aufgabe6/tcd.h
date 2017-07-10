@@ -25,6 +25,8 @@ class TCD: virtual public TMedium
     void load(ifstream&);
     virtual ~TCD();
     void print();
+    friend ostream& operator<<(ostream&, TCD&);
+    bool print_parents = true;
 };
 
 #endif

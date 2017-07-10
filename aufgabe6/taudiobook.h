@@ -17,6 +17,7 @@ class TAudioBook: public TBook, public TCD
 
     private:
         streampos startPos, endPos;
+        bool print_parents = true;
 
     public:
         /**
@@ -26,7 +27,7 @@ class TAudioBook: public TBook, public TCD
         TAudioBook(ifstream&, streampos);
         void load(ifstream&);
         ~TAudioBook();
-
+        friend ostream& operator<<(ostream&, TAudioBook&);
         void print();
 };
 

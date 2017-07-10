@@ -14,6 +14,7 @@ class TMagazine: public TPrintedMedium
   private:
     string Designer;
     streampos startPos, endPos;
+    bool print_parents = true;
   public:
     /**
      * @brief Create magazine object by parsing from XML
@@ -23,6 +24,7 @@ class TMagazine: public TPrintedMedium
     ~TMagazine();
     void load(ifstream&);
     void print();
+    friend ostream& operator<<(ostream&, TMagazine&);
 };
 
 #endif

@@ -5,8 +5,10 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <vector>
 
 #include "tperson.h"
+#include "tloan.h"
 #include "xml.h"
 
 class TCustomer: virtual public TPerson
@@ -16,6 +18,7 @@ class TCustomer: virtual public TPerson
 
     private:
         streampos endPos;
+        vector<TLoan*> LoanList;
         
     public:
         TCustomer(ifstream&, streampos);
@@ -24,6 +27,7 @@ class TCustomer: virtual public TPerson
         virtual void print();
         string get_customerNr() const;
         void set_customerNr(string);
+        void add(TLoan*);
 };
 
 #endif

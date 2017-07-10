@@ -16,6 +16,13 @@
 #include "tcustomer.h"
 #include "xml.h"
 
+#ifdef TLOAN_H
+// forward declaration to break circular dependency
+class TLoan;
+#else
+#include "tloan.h"
+#endif
+
 class TLibraryPool
 {
     protected:
@@ -26,16 +33,21 @@ class TLibraryPool
         TEmployee *Boss;
         vector<TLibrary*> LibraryList;
         vector<TCustomer*> CustomerList;
+        vector<TLoan*> LoanList;
         ifstream inFile;
 
     public:
         TLibraryPool(string, TPerson*);
         TLibraryPool(string);
         ~TLibraryPool();
-
         void add(TLibrary*);
         void add(TCustomer*);
+        void add(TLoan*);
         void print();
+        friend ostream& operator<<(ostream&, TLibraryPool&);
+        
+        TCustomer* getCustomerByNr(string);
+        TMedium* getMediumBySignature(string);
 
         void set_name(string);
         void set_boss(TEmployee*);

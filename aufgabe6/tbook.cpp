@@ -39,7 +39,16 @@ TBook::~TBook()
 
 void TBook::print()
 {
-    cout.fill(' ');
-    cout << setw(10) << left << "Author: "<< Author << endl;
-    TMedium::print();
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TBook& book)
+{
+    out.fill(' ');
+    out << setw(15) << left << "Author: "<< book.Author << endl;
+    if (book.print_parents)
+    {
+        out << (TPrintedMedium&) book;
+    }
+    return out;    
 }

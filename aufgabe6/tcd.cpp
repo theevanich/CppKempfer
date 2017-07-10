@@ -53,7 +53,20 @@ TCD::~TCD()
 
 void TCD::print()
 {
-    cout << "Interpret: " << Interpret << endl;
-    cout << "Anz. Tracks: " << Tracks << endl;
-    TMedium::print();
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TCD& cd)
+{
+
+    out.fill(' ');
+    out << setw(15) << left << "Interpret: " << cd.Interpret << endl;
+    out << setw(15) << left << "Anz. Tracks: " << cd.Tracks << endl;
+
+    if (cd.print_parents)
+    {
+        out << (TMedium&) cd;
+    }
+
+    return out;
 }

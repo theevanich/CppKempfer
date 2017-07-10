@@ -68,3 +68,69 @@ void TDate::print()
     cout.fill('0');
     cout << setw(2) << right << dd << '.' << setw(2) << right << mm << '.' << yyyy;
 }
+
+bool TDate::isLeapYear(int year)
+{
+    return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+}
+
+
+uint8_t TDate::daysPerMonth(int month, int year)
+{
+    static const uint8_t dayCount[] =
+    {
+        31, // january
+        28, // february
+        31, // march
+        30, // april
+        31, // may
+        30, // june
+        31, // july
+        31, // august
+        30, // september
+        31, // october
+        30, // november
+        31, // december
+    };
+
+    return ((month == 2) && isLeapYear(year)) ? 29 : dayCount[month-1];
+}
+
+
+/**
+ * @brief Creates a new date object by \
+ *        adding or subtracting a given number of days
+ * @param days Number of days to add/subtract from date
+ */
+
+TDate* operator+(TDate date, int days)
+{
+    int day = date.dd;
+    int month = date.mm;
+    int year = date.yyyy;
+    while (days > 0)
+    {
+        days--;
+        day++;
+        if (day > TDate::daysPerMonth(month, year))
+        {
+            day = 1;
+            month++;
+            if (month > 12)
+            {
+                month = 1;
+                year++;
+            }
+        }
+    }
+    cout << "returning new date: " << setw(2) << right << day << '.' << setw(2) << right << month << '.' << year << endl;
+    return new TDate(day, month, year);
+}
+
+
+ostream& operator<<(ostream& out, TDate* d)
+{
+    out.fill('0');
+    out << setw(2) << right << d->dd << '.' << setw(2) << right << d->mm << '.' << d->yyyy;
+    return out;
+}

@@ -7,9 +7,12 @@ using namespace std;
 int main()
 {
     cout << "hello starting now" << endl;
+    
     TLibraryPool LP("data.xml");
-
     LP.print();
+    
+    //cout << LP << endl;
+    
     cout << endl;
 
     return 0;

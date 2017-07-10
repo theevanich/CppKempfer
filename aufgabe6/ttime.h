@@ -29,7 +29,7 @@ class TTime
         void set_mm(int mm);
         void set_ss(int ss);
         void print();
-    
+        friend ostream& operator<<(ostream&, TTime*);
 };
 
 #endif

@@ -56,9 +56,22 @@ TDVD::~TDVD()
 
 void TDVD::print()
 {
-    cout << "Actors: " << Actors << endl;
-    cout << "Spieldauer: ";
-    PlayingTime->print();
-    cout << endl;
-    TMedium::print();
+    cout << *this;
 }
+
+ostream& operator<<(ostream& out, TDVD& dvd)
+{
+    out.fill(' ');
+    out << setw(15) << left << "Actors: " << dvd.Actors << endl;
+    if (dvd.PlayingTime != nullptr)
+    {
+        out << setw(15) << left << "Spieldauer: " << dvd.PlayingTime << endl;
+    }
+
+    if (dvd.print_parents)
+    {
+        out << (TMedium&) dvd;
+    }
+
+    return out;
+ }

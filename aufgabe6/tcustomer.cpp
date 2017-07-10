@@ -35,6 +35,11 @@ TCustomer::~TCustomer()
     cout << "Destructing TCustomer \"" << this->Name << "\"... " << endl;
 }
 
+void TCustomer::add(TLoan* loan)
+{
+    LoanList.push_back(loan);
+}
+
 void TCustomer::print()
 {
     cout << TPerson::get_name();
@@ -44,6 +49,14 @@ void TCustomer::print()
     cout << "* ";
     Birthday->print();
     cout << endl;
+    if (LoanList.size() > 0)
+    {
+        cout << "Ausleihen:" << endl;
+        for(uint8_t i = 0; i < LoanList.size(); i++)
+        {
+            LoanList.at(i)->print();
+        }
+    }
 }
 
 string TCustomer::get_customerNr() const

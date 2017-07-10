@@ -85,6 +85,21 @@ void TLibrary::add(TMedium *medium)
     MediumList.push_back(medium);
 }
 
+TMedium* TLibrary::getMediumBySignature(string Signature)
+{
+    for (uint16_t i=0; i<MediumList.size(); i++)
+    {
+        TMedium* medium = MediumList[i];
+        if (medium != 0 && medium->get_signature().compare(Signature) == 0)
+        {
+            // great success
+            return medium;
+        }
+    }
+    // search unsuccessful
+    return nullptr;
+}
+
 void TLibrary::print()
 {
     cout << "Buecherei Filiale " << get_name() << endl;
@@ -96,6 +111,7 @@ void TLibrary::print()
     for(unsigned i = 0; i < MediumList.size(); i++)
     {
         cout << endl;
+        cout << "Medium Nr. " << i+1 << endl;
         MediumList.at(i)->print();
         cout << endl;
     }

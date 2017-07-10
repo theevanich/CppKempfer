@@ -10,8 +10,8 @@ TLibraryPool::TLibraryPool(string xmlFile)
 :Filename(xmlFile)
 {
     inFile.open(Filename.c_str());
-    string tagToLookFor[] = {"<Name>", "<Chairman>", "<Library>", "<Customer>"};
-    string endTag[] = {"</Name>", "</Chairman>", "</Library>", "</Customer>"};
+    string tagToLookFor[] = {"<Name>", "<Chairman>", "<Library>", "<Customer>", "<Loan>"};
+    string endTag[] = {"</Name>", "</Chairman>", "</Library>", "</Customer>", "</Loan>"};
     int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
     string line;
     streampos startPos, endPos;
@@ -24,7 +24,6 @@ TLibraryPool::TLibraryPool(string xmlFile)
         {
             while (getline(inFile, line))
             {
-                // cout << "Line: " << line << endl; 
                 // detect end of xml to prevent any problems
                 if (line.find("</LibraryPool>") != string::npos)
                 {
@@ -39,8 +38,6 @@ TLibraryPool::TLibraryPool(string xmlFile)
                         startPos = inFile.tellg();
                         endPos = findEndPos(inFile, endTag[i]);
                         inFile.seekg(startPos);
-                        // cout << "case: " << tagToLookFor[i] << "in line: " << line << endl;
-                        // cout << "startPos: " << startPos << ", endPos: " << endPos << endl;
                         switch(i)
                         {
                              // find Pool name > save directly
@@ -57,6 +54,9 @@ TLibraryPool::TLibraryPool(string xmlFile)
                                 break;
                             case 3:
                                 add(new TCustomer(inFile, endPos));
+                                break;
+                            case 4:
+                                add(new TLoan(inFile));
                                 break;
                             default:
                                 cout << "Nothing found... in LibraryPool" << endl;
@@ -85,6 +85,10 @@ TLibraryPool::~TLibraryPool()
     {
         delete CustomerList[i];
     }
+    for(unsigned i = 0; i < LoanList.size(); i++)
+    {
+        delete LoanList[i];
+    }
     delete Boss;        
 }
 
@@ -98,28 +102,87 @@ void TLibraryPool::add(TLibrary* lib)
     LibraryList.push_back(lib);
 }
 
+void TLibraryPool::add(TLoan* loan)
+{
+    LoanList.push_back(loan);
+    loan->setCustomer(getCustomerByNr(loan->get_customerNumber()));
+    loan->setMedium(getMediumBySignature(loan->get_signatur()));
+    loan->getMedium()->set_status(2);
+    getCustomerByNr(loan->get_customerNumber())->add(loan);
+}
+
 void TLibraryPool::print()
 {
-    cout << endl;
-    cout << get_name() << endl;
-    cout << "Leitung: ";
-    Boss->print();
-    cout << endl;
-    cout << "\nZum Buecherverband gehoeren " << LibraryList.size() << " Filialen" << endl;
-    for(unsigned i = 0; i < LibraryList.size(); i++)
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TLibraryPool& librarypool)
+{
+    out << endl;
+    out << librarypool.get_name() << endl;
+    out << "Leitung: ";
+    librarypool.Boss->print();
+    out << endl;
+    out << "\nZum Buecherverband gehoeren " << librarypool.LibraryList.size() << " Filialen" << endl;
+    for(unsigned i = 0; i < librarypool.LibraryList.size(); i++)
     {
-        cout << endl;
-        LibraryList.at(i)->print();
-        cout << endl;
+        out << endl;
+        librarypool.LibraryList.at(i)->print();
+        out << endl;
     }
-    cout << endl;
-    cout << "Der Buecherverband hat " << CustomerList.size() << " Kunde/Kunden" << endl;
-    for(unsigned j = 0; j < CustomerList.size(); j++)
+    out << endl;
+    out << "Der Buecherverband hat " << librarypool.CustomerList.size() << " Kunde/Kunden" << endl;
+    for(unsigned j = 0; j < librarypool.CustomerList.size(); j++)
     {
-        cout << endl;
-        CustomerList.at(j)->print();
+        out << endl;
+        librarypool.CustomerList.at(j)->print();
     }
-    cout << endl;
+    out << endl;
+    out << "Folgende " << librarypool.LoanList.size() << " Medien sind ausgeliehen:" << endl;
+    out << endl;
+    
+    for(unsigned k = 0; k < librarypool.LoanList.size(); k++)
+    {
+        out << endl;
+        librarypool.LoanList.at(k)->print();
+    }
+    
+    return out;
+}
+
+TCustomer* TLibraryPool::getCustomerByNr(string CustomerNr)
+{
+    for (uint8_t i=0; i<CustomerList.size(); i++)
+    {
+        TCustomer *c = CustomerList[i];
+        if (c != nullptr && c->get_customerNr().compare(CustomerNr) == 0)
+        {
+            // comparison is a match!
+            return c;
+        }
+    }
+
+    // search was unsuccessful
+    return nullptr;
+}
+
+TMedium* TLibraryPool::getMediumBySignature(string Signature)
+{
+    for (uint8_t i=0; i<LibraryList.size(); i++)
+    {
+        TLibrary* library = LibraryList[i];
+        if (library != nullptr)
+        {
+            TMedium* medium = library->getMediumBySignature(Signature);
+            if (medium != nullptr)
+            {
+                // great success
+                return medium;
+            }
+        }
+    }
+    // search was unsuccessful
+    return nullptr;
 }
 
 void TLibraryPool::set_name(string n) {Name = n;}

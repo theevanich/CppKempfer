@@ -22,7 +22,7 @@ class TMedium
         string Signature;
         TLocation* Location;
         int FSK = 0;
-        Status status;
+        Status status = TMedium::verfuegbar;
         void load(ifstream&);
         streampos startPos, endPos;
         
@@ -32,6 +32,7 @@ class TMedium
         // TMedium(string, string, TLocation*, int, Status);
         TMedium(ifstream&, streampos);
         virtual void print();
+        friend ostream& operator<<(ostream&, TMedium&);
         
         void set_status(Status);
         void set_status(int);

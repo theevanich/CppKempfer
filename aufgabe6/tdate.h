@@ -29,8 +29,11 @@ class TDate
         //void set_dd(int dd);
         //void set_mm(int mm);
         //void set_yyyy(int yyyy);
+        static bool isLeapYear(int);
+        static uint8_t daysPerMonth(int, int);
+        friend TDate* operator+(TDate date, int days);
         void print();
-    
+        friend ostream& operator<<(ostream&, TDate*); 
 };
 
 #endif

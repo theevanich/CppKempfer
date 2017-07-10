@@ -23,7 +23,7 @@ TMedium::TMedium(ifstream& inFile, streampos endPos)
 
 void TMedium::load(ifstream& inFile)
 {
-    string tagToLookFor[] = {"<Title>", "<Signatur>", "<Location>", "<FSK>", "<Status>"};
+    string tagToLookFor[] = {"<Title>", "<Signatur>", "<Location>", "<FSK>"};
     int maxTag = sizeof(tagToLookFor) / sizeof(*tagToLookFor);
     string line;
     startPos = inFile.tellg();
@@ -53,9 +53,6 @@ void TMedium::load(ifstream& inFile)
                         break;
                     case 3:
                         FSK = atoi(parseLine(line, tagToLookFor[i]).c_str());
-                        break;
-                    case 4:
-                        set_status(atoi(parseLine(line, tagToLookFor[i]).c_str()));
                         break;
                     default:
                         cout << "Nothing found... in Medium" << endl;
@@ -118,10 +115,16 @@ string TMedium::get_status() const
 
 void TMedium::print()
 {
-    cout.fill(' ');
-    cout << setw(10) << left << "Titel: "<< get_name() << endl;
-    cout << setw(10) << left << "Signatur: " << get_signature() << endl;
-    cout << setw(10) << left << "Ort:"; Location->print(); cout << endl;
-    cout << setw(10) << left << "FSK:" << "freigegeben ab " << get_FSK() << " Jahren" << endl;
-    cout << setw(10) << left << "Status: " << get_status();
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TMedium& tmedium)
+{
+    out.fill(' ');
+    out << setw(15) << left << "Titel: "<< tmedium.get_name() << endl;
+    out << setw(15) << left << "Signatur: " << tmedium.get_signature() << endl;
+    out << setw(15) << left << "Ort:"; tmedium.Location->print(); out << endl;
+    out << setw(15) << left << "FSK:" << "freigegeben ab " << tmedium.get_FSK() << " Jahren" << endl;
+    out << setw(15) << left << "Status: " << tmedium.get_status();
+    return out;
 }

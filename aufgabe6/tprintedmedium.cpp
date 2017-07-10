@@ -30,14 +30,23 @@ void TPrintedMedium::load(ifstream& inFile)
     }    
 }
 
-void TPrintedMedium::print()
-{
-    cout << "Medientyp: Gedrucktes Medium" << endl;
-    TMedium::print();
-}
-
-
 TPrintedMedium::~TPrintedMedium ()
 {
     cout << "Destructing TPrintedMedium \"" << get_name() << "\"..." << endl;
+}
+
+void TPrintedMedium::print()
+{
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TPrintedMedium& tprintedmedium)
+{
+    out.fill(' ');
+    out << setw(15) << left << "Anz. Seiten: " << tprintedmedium.Pages << endl;
+    if (tprintedmedium.print_parents)
+    {
+        out << (TMedium&) tprintedmedium;
+    }
+    return out;    
 }

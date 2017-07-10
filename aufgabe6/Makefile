@@ -31,7 +31,7 @@ C_SRC = $(wildcard *.c)
 CPP_SRC = $(wildcard *.cpp)
 OBJS = $(CPP_SRC:.cpp=.o)
 HEADERS = $(wildcard *.h)
-TARGET := ueb05
+TARGET := ueb06
 
 #
 # Detect operating system

@@ -14,7 +14,7 @@
    <CustomerNr>M007</CustomerNr>
    <Address>
     <Street>Schlossstr.</Street>
-    <HouseNr>177</HouseNr>
+    <Number>117</Number>
     <Zipcode>12077</Zipcode>
     <Town>Berlin</Town>
    </Address>
@@ -38,7 +38,6 @@
     <Rack>Computer</Rack>
    </Location>
    <FSK>0</FSK>
-   <Status>2</Status>
   </Book>
   <Book>
    <Author>Edgar Wallace</Author>
@@ -50,7 +49,6 @@
     <Rack>Krimi</Rack>
    </Location>
    <FSK>12</FSK>
-   <Status>1</Status>
   </Book>
   <Manager>
    <Employee>
@@ -109,7 +107,6 @@
     <Section>Kunst</Section>
    </Location>
    <FSK>0</FSK>
-   <Status>1</Status>
   </Magazine>
   <DVD>
    <Actors>Klaus Kinski, Eddi Arend</Actors>
@@ -126,8 +123,17 @@
     <Rack>Horror</Rack>
    </Location>
    <FSK>16</FSK>
-   <Status>2</Status>
   </DVD>
+  <CD>
+   <Title>Bravo Hits 2015</Title>
+   <Signatur>BH2015_27</Signatur>
+   <Location>
+    <Section>CDs</Section>
+    <Rack>Musik</Rack>
+   </Location>
+   <Interpret>Verschiedene</Interpret>
+   <Tracks>21</Tracks>
+  </CD>
   <Audiobook>
    <Title>Der grosse Entwurf</Title>
    <Signatur>UNI123</Signatur>
@@ -136,23 +142,11 @@
     <Section>CDs</Section>
     <Rack>Audiobuecher</Rack>
    </Location>
-   <Status>1</Status>
    <Interpret>Leonard Mlodinow</Interpret>
    <Tracks>15</Tracks>
    <Pages>560</Pages>
    <countCDs>3</countCDs>
   </Audiobook>
-  <CD>
-   <Title>Bravo Hits 2015</Title>
-   <Signatur>BH2015_27</Signatur>
-   <Location>
-    <Section>CDs</Section>
-    <Rack>Musik</Rack>
-   </Location>
-   <Status>1</Status>
-   <Interpret>Verschiedene</Interpret>
-   <Tracks>21</Tracks>
-  </CD>
  </Library>
  <Customer>
   <Name>Marion Schulz</Name>
@@ -188,4 +182,40 @@
    </Date>
   </Birthday>
  </Customer>
+ <Loan>
+  <Signatur>He83</Signatur>
+  <CustomerNr>M179</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>4</Day>
+    <Month>12</Month>
+    <Year>2015</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>21</LoanDays>
+ </Loan>
+ <Loan>
+  <Signatur>WW175</Signatur>
+  <CustomerNr>M179</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>4</Day>
+    <Month>12</Month>
+    <Year>2015</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>14</LoanDays>
+ </Loan>
+ <Loan>
+  <Signatur>UNI123</Signatur>
+  <CustomerNr>S317</CustomerNr>
+  <LoanDate>
+   <Date>
+    <Day>4</Day>
+    <Month>12</Month>
+    <Year>2015</Year>
+   </Date>
+  </LoanDate>
+  <LoanDays>28</LoanDays>
+ </Loan>
 </LibraryPool>

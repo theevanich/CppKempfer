@@ -37,7 +37,16 @@ void TMagazine::load(ifstream& inFile)
 
 void TMagazine::print()
 {
-    cout.fill(' ');
-    cout << setw(10) << left << "Designer: "<< Designer << endl;
-    TMedium::print();
+    cout << *this;
+}
+
+ostream& operator<<(ostream& out, TMagazine& tmagazine)
+{
+    out.fill(' ');
+    out << setw(15) << left << "Designer: "<< tmagazine.Designer << endl;
+    if (tmagazine.print_parents)
+    {
+        out << (TMedium&) tmagazine;
+    }
+    return out;
 }

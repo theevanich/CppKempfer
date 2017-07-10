@@ -13,6 +13,7 @@ class TPrintedMedium: virtual public TMedium
   private:
     int Pages;
     streampos startPos, endPos;
+    bool print_parents = true;
     
   public:
     /**
@@ -22,7 +23,8 @@ class TPrintedMedium: virtual public TMedium
     TPrintedMedium(ifstream&, streampos);
     void load(ifstream&);
     ~TPrintedMedium();
-    void print();
+    virtual void print();
+    friend ostream& operator<<(ostream&, TPrintedMedium&);
 };
 
 #endif

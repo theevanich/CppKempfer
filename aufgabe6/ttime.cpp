@@ -101,6 +101,12 @@ void TTime::set_ss(int ss)
 
 void TTime::print()
 {
-    cout.fill('0');
-    cout << setw(2) << right << hh << ':' << setw(2) << right << mm << ':' << setw(2) << right << ss;
+    cout << this;
+}
+
+ostream& operator<<(ostream& out, TTime* t)
+{
+    out.fill('0');
+    out << setw(2) << right << t->hh << ':' << setw(2) << right << t->mm << ':' << setw(2) << right << t->ss;
+    return out;
 }
