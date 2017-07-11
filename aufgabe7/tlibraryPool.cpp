@@ -81,9 +81,12 @@ TLibraryPool::~TLibraryPool()
     {
         delete CustomerList[i];
     }
-    for(unsigned i = 0; i < LibraryList.size(); i++)
+
+    for (vector<TLibrary*>::iterator k = LibraryList.begin();
+         k != LibraryList.end();
+         k++)
     {
-        delete LibraryList[i];
+        delete *k;
     }
 //    for(unsigned i = 0; i < LoanList.size(); i++)
 //    {
@@ -123,14 +126,18 @@ ostream& operator<<(ostream& out, TLibraryPool& librarypool)
     out << "Leitung: ";
     librarypool.Boss->print();
     out << endl;
+
     out << "\nZum Buecherverband gehoeren " << librarypool.LibraryList.size() << " Filialen" << endl;
-    for(unsigned i = 0; i < librarypool.LibraryList.size(); i++)
+    for (vector<TLibrary*>::iterator k = librarypool.LibraryList.begin();
+         k != librarypool.LibraryList.end();
+         k++)
     {
         out << endl;
-        librarypool.LibraryList.at(i)->print();
+        (*k)->print();
         out << endl;
     }
     out << endl;
+
     out << "Der Buecherverband hat " << librarypool.CustomerList.size() << " Kunde/Kunden" << endl;
     for(unsigned j = 0; j < librarypool.CustomerList.size(); j++)
     {
