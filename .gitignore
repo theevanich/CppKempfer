@@ -1,32 +1,25 @@
-# Prerequisites
-*.d
 
-# Compiled Object files
-*.slo
-*.lo
+# Eclipse
+.project
+.cproject
+.settings
+.metadata
+
+# generated
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
-*.lib
-
-# Executables
-*.exe
+*.lo
+*.la
+*.elf
+*.map
 *.out
-*.app
+*.lib
+*.exe
+
+# temporary
+*~
+.*.swp
+.*.lock*
+ueb06
+ueb07
+
