@@ -77,18 +77,18 @@ TLibraryPool::TLibraryPool(string xmlFile)
 
 TLibraryPool::~TLibraryPool()
 {
-    for(unsigned i = 0; i < LibraryList.size(); i++)
-    {
-        delete LibraryList[i];
-    }   
     for(unsigned i = 0; i < CustomerList.size(); i++)
     {
         delete CustomerList[i];
     }
-    for(unsigned i = 0; i < LoanList.size(); i++)
+    for(unsigned i = 0; i < LibraryList.size(); i++)
     {
-        delete LoanList[i];
+        delete LibraryList[i];
     }
+//    for(unsigned i = 0; i < LoanList.size(); i++)
+//    {
+//        delete LoanList[i];
+//    }
     delete Boss;        
 }
 

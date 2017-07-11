@@ -33,6 +33,14 @@ void TCustomer::load(ifstream& inFile)
 TCustomer::~TCustomer()
 {
     cout << "Destructing TCustomer \"" << this->Name << "\"... " << endl;
+
+    for (uint8_t i=0; i<LoanList.size(); i++)
+    {
+        if (LoanList[i]->getCustomer() == this)
+        {
+            delete LoanList[i];
+        }
+    }
 }
 
 void TCustomer::add(TLoan* loan)
