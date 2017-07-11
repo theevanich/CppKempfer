@@ -77,9 +77,11 @@ TLibraryPool::TLibraryPool(string xmlFile)
 
 TLibraryPool::~TLibraryPool()
 {
-    for(unsigned i = 0; i < CustomerList.size(); i++)
+    for(vector<TCustomer*>::iterator k = CustomerList.begin();
+        k != CustomerList.end();
+        k++)
     {
-        delete CustomerList[i];
+        delete *k;
     }
 
     for (vector<TLibrary*>::iterator k = LibraryList.begin();
@@ -88,10 +90,7 @@ TLibraryPool::~TLibraryPool()
     {
         delete *k;
     }
-//    for(unsigned i = 0; i < LoanList.size(); i++)
-//    {
-//        delete LoanList[i];
-//    }
+
     delete Boss;        
 }
 
@@ -139,12 +138,15 @@ ostream& operator<<(ostream& out, TLibraryPool& librarypool)
     out << endl;
 
     out << "Der Buecherverband hat " << librarypool.CustomerList.size() << " Kunde/Kunden" << endl;
-    for(unsigned j = 0; j < librarypool.CustomerList.size(); j++)
+    for (vector<TCustomer*>::iterator k = librarypool.CustomerList.begin();
+         k != librarypool.CustomerList.end();
+         k++)
     {
         out << endl;
-        librarypool.CustomerList.at(j)->print();
+        (*k)->print();
     }
     out << endl;
+
     out << "Folgende " << librarypool.LoanList.size() << " Medien sind ausgeliehen:" << endl;
     out << endl;
     
