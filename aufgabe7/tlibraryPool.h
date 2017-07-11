@@ -14,6 +14,7 @@
 #include "tlibrary.h"
 #include "temployee.h"
 #include "tcustomer.h"
+#include "tlist.h"
 #include "xml.h"
 
 #ifdef TLOAN_H
@@ -33,7 +34,7 @@ class TLibraryPool
         TEmployee *Boss;
         vector<TLibrary*> LibraryList;
         vector<TCustomer*> CustomerList;
-        vector<TLoan*> LoanList;
+        TList<TLoan*> LoanList;
         ifstream inFile;
 
     public:

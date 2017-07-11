@@ -77,18 +77,20 @@ TLibraryPool::TLibraryPool(string xmlFile)
 
 TLibraryPool::~TLibraryPool()
 {
-    for(unsigned i = 0; i < CustomerList.size(); i++)
+    for(vector<TCustomer*>::iterator k = CustomerList.begin();
+        k != CustomerList.end();
+        k++)
     {
-        delete CustomerList[i];
+        delete *k;
     }
-    for(unsigned i = 0; i < LibraryList.size(); i++)
+
+    for (vector<TLibrary*>::iterator k = LibraryList.begin();
+         k != LibraryList.end();
+         k++)
     {
-        delete LibraryList[i];
+        delete *k;
     }
-//    for(unsigned i = 0; i < LoanList.size(); i++)
-//    {
-//        delete LoanList[i];
-//    }
+
     delete Boss;        
 }
 
@@ -123,28 +125,37 @@ ostream& operator<<(ostream& out, TLibraryPool& librarypool)
     out << "Leitung: ";
     librarypool.Boss->print();
     out << endl;
+
     out << "\nZum Buecherverband gehoeren " << librarypool.LibraryList.size() << " Filialen" << endl;
-    for(unsigned i = 0; i < librarypool.LibraryList.size(); i++)
+    for (vector<TLibrary*>::iterator k = librarypool.LibraryList.begin();
+         k != librarypool.LibraryList.end();
+         k++)
     {
         out << endl;
-        librarypool.LibraryList.at(i)->print();
+        (*k)->print();
         out << endl;
     }
     out << endl;
+
     out << "Der Buecherverband hat " << librarypool.CustomerList.size() << " Kunde/Kunden" << endl;
-    for(unsigned j = 0; j < librarypool.CustomerList.size(); j++)
+    for (vector<TCustomer*>::iterator k = librarypool.CustomerList.begin();
+         k != librarypool.CustomerList.end();
+         k++)
     {
         out << endl;
-        librarypool.CustomerList.at(j)->print();
+        (*k)->print();
     }
     out << endl;
+
     out << "Folgende " << librarypool.LoanList.size() << " Medien sind ausgeliehen:" << endl;
     out << endl;
     
-    for(unsigned k = 0; k < librarypool.LoanList.size(); k++)
+    for (TList<TLoan*>::Iterator k = librarypool.LoanList.begin();
+         k != librarypool.LoanList.end();
+         k++)
     {
         out << endl;
-        librarypool.LoanList.at(k)->print();
+        (*k)->print();
     }
     
     return out;
