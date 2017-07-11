@@ -141,10 +141,12 @@ ostream& operator<<(ostream& out, TLibraryPool& librarypool)
     out << "Folgende " << librarypool.LoanList.size() << " Medien sind ausgeliehen:" << endl;
     out << endl;
     
-    for(unsigned k = 0; k < librarypool.LoanList.size(); k++)
+    for (TList<TLoan*>::Iterator k = librarypool.LoanList.begin();
+         k != librarypool.LoanList.end();
+         k++)
     {
         out << endl;
-        librarypool.LoanList.at(k)->print();
+        (*k)->print();
     }
     
     return out;

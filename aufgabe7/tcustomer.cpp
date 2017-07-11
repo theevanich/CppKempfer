@@ -34,11 +34,13 @@ TCustomer::~TCustomer()
 {
     cout << "Destructing TCustomer \"" << this->Name << "\"... " << endl;
 
-    for (uint8_t i=0; i<LoanList.size(); i++)
+    for (TList<TLoan*>::Iterator k = LoanList.begin();
+         k != LoanList.end();
+         k++)
     {
-        if (LoanList[i]->getCustomer() == this)
+        if ((*k)->getCustomer() == this)
         {
-            delete LoanList[i];
+            LoanList.erase(k);
         }
     }
 }
@@ -60,9 +62,12 @@ void TCustomer::print()
     if (LoanList.size() > 0)
     {
         cout << "Ausleihen:" << endl;
-        for(uint8_t i = 0; i < LoanList.size(); i++)
+
+        for (TList<TLoan*>::Iterator k = LoanList.begin();
+             k != LoanList.end();
+             k++)
         {
-            LoanList.at(i)->print();
+            (*k)->print();
         }
     }
 }

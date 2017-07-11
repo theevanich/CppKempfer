@@ -9,6 +9,7 @@
 
 #include "tperson.h"
 #include "tloan.h"
+#include "tlist.h"
 #include "xml.h"
 
 class TCustomer: virtual public TPerson
@@ -18,7 +19,7 @@ class TCustomer: virtual public TPerson
 
     private:
         streampos endPos;
-        vector<TLoan*> LoanList;
+        TList<TLoan*> LoanList;
         
     public:
         TCustomer(ifstream&, streampos);
