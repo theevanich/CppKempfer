@@ -35,18 +35,20 @@ TPrintedMedium::~TPrintedMedium ()
     cout << "Destructing TPrintedMedium \"" << get_name() << "\"..." << endl;
 }
 
-void TPrintedMedium::print()
-{
-    cout << *this;
-}
 
-ostream& operator<<(ostream& out, TPrintedMedium& tprintedmedium)
+void TPrintedMedium::print(ostream& out)
 {
     out.fill(' ');
-    out << setw(15) << left << "Anz. Seiten: " << tprintedmedium.Pages << endl;
-    if (tprintedmedium.print_parents)
+    out << setw(15) << left << "Anz. Seiten: " << Pages << endl;
+
+    if (print_parents)
     {
-        out << (TMedium&) tprintedmedium;
+        TMedium::print(out);
     }
+}
+
+ostream& operator<<(ostream& out, TPrintedMedium& printedmedium)
+{
+    printedmedium.print(out);
     return out;    
 }

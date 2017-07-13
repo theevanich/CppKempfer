@@ -23,7 +23,8 @@ class TPrintedMedium: virtual public TMedium
     TPrintedMedium(ifstream&, streampos);
     void load(ifstream&);
     ~TPrintedMedium();
-    virtual void print();
+
+    virtual void print(ostream&);
     friend ostream& operator<<(ostream&, TPrintedMedium&);
 };
 

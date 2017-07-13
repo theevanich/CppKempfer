@@ -27,8 +27,9 @@ class TAudioBook: public TBook, public TCD
         TAudioBook(ifstream&, streampos);
         void load(ifstream&);
         ~TAudioBook();
+
         friend ostream& operator<<(ostream&, TAudioBook&);
-        void print();
+        virtual void print(ostream&);
 };
 
 #endif

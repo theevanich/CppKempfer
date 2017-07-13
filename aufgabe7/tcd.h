@@ -22,10 +22,13 @@ class TCD: virtual public TMedium
      * @param XML node to import
      */
     TCD(ifstream&, streampos);
-    void load(ifstream&);
     virtual ~TCD();
-    void print();
+
+    void load(ifstream&);
+
+    virtual void print(ostream&);
     friend ostream& operator<<(ostream&, TCD&);
+
     bool print_parents = true;
 };
 

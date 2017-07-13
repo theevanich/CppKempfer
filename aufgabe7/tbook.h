@@ -26,8 +26,9 @@ class TBook: virtual public TPrintedMedium
     /**
      * @brief Grant output stream operator access to private class members
      */
+    virtual void print(ostream&);
     friend ostream& operator<<(ostream&, TBook&);
-    void print();
+
     bool print_parents = true;
 };
 

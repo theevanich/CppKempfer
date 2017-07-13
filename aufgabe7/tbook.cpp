@@ -37,18 +37,18 @@ TBook::~TBook()
     cout << "Destructing TBook \"" << get_name() << "\"..." << endl;
 }
 
-void TBook::print()
+void TBook::print(ostream& out)
 {
-    cout << *this;
+    out.fill(' ');
+    out << setw(15) << left << "Author: "<< Author << endl;
+    if (print_parents)
+    {
+        TPrintedMedium::print(out);
+    }
 }
 
 ostream& operator<<(ostream& out, TBook& book)
 {
-    out.fill(' ');
-    out << setw(15) << left << "Author: "<< book.Author << endl;
-    if (book.print_parents)
-    {
-        out << (TPrintedMedium&) book;
-    }
+    book.print(out);
     return out;    
 }

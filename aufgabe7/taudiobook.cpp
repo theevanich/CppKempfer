@@ -41,22 +41,21 @@ TAudioBook::~TAudioBook()
 }
 
 
-void TAudioBook::print()
+void TAudioBook::print(ostream& out)
 {
-    cout << *this;
+    out.fill(' ');
+    out << setw(15) << left << "Anz. CDs: " << countCDs << endl;
+    if (print_parents)
+    {
+        ((TCD&) *this).print_parents = false;
+        TCD::print(out);
+        ((TBook&) *this).print_parents = true;
+        TBook::print(out);
+    }
 }
 
 ostream& operator<<(ostream& out, TAudioBook& ab)
 {
-    out.fill(' ');
-    out << setw(15) << left << "Anz. CDs: " << ab.countCDs << endl;
-    if (ab.print_parents)
-    {
-        ((TCD&) ab).print_parents = false;
-        out << (TCD&) ab;
-        ((TBook&) ab).print_parents = true;
-        out << (TBook&) ab;
-    }
-
+    ab.print(out);
     return out;
 }

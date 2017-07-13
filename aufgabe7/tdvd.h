@@ -23,9 +23,11 @@ class TDVD: public TMedium
      * @param XML node to import
      */
     TDVD(ifstream&, streampos);
-    void load(ifstream&);
     ~TDVD();
-    void print();
+
+    void load(ifstream&);
+
+    virtual void print(ostream&);
     friend ostream& operator<<(ostream&, TDVD&);
 };
 

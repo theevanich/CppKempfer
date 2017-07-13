@@ -113,18 +113,18 @@ string TMedium::get_status() const
     }
 }
 
-void TMedium::print()
-{
-    cout << *this;
-}
-
-ostream& operator<<(ostream& out, TMedium& tmedium)
+void TMedium::print(ostream& out)
 {
     out.fill(' ');
-    out << setw(15) << left << "Titel: "<< tmedium.get_name() << endl;
-    out << setw(15) << left << "Signatur: " << tmedium.get_signature() << endl;
-    out << setw(15) << left << "Ort:"; tmedium.Location->print(); out << endl;
-    out << setw(15) << left << "FSK:" << "freigegeben ab " << tmedium.get_FSK() << " Jahren" << endl;
-    out << setw(15) << left << "Status: " << tmedium.get_status();
+    out << setw(15) << left << "Titel: "<< get_name() << endl;
+    out << setw(15) << left << "Signatur: " << get_signature() << endl;
+    out << setw(15) << left << "Ort:"; Location->print(); out << endl;
+    out << setw(15) << left << "FSK:" << "freigegeben ab " << get_FSK() << " Jahren" << endl;
+    out << setw(15) << left << "Status: " << get_status();
+}
+
+ostream& operator<<(ostream& out, TMedium& medium)
+{
+    medium.print(out);
     return out;
 }
