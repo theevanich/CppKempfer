@@ -51,22 +51,20 @@ TCD::~TCD()
     cout << "Destructing TCD \"" << get_name() << "\"..." << endl;
 }
 
-void TCD::print()
+void TCD::print(ostream& out)
 {
-    cout << *this;
+    out.fill(' ');
+    out << setw(15) << left << "Interpret: " << Interpret << endl;
+    out << setw(15) << left << "Anz. Tracks: " << Tracks << endl;
+
+    if (print_parents)
+    {
+        TMedium::print(out);
+    }
 }
 
 ostream& operator<<(ostream& out, TCD& cd)
 {
-
-    out.fill(' ');
-    out << setw(15) << left << "Interpret: " << cd.Interpret << endl;
-    out << setw(15) << left << "Anz. Tracks: " << cd.Tracks << endl;
-
-    if (cd.print_parents)
-    {
-        out << (TMedium&) cd;
-    }
-
+    cd.print(out);
     return out;
 }

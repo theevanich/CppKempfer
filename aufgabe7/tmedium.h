@@ -31,7 +31,8 @@ class TMedium
         virtual ~TMedium();
         // TMedium(string, string, TLocation*, int, Status);
         TMedium(ifstream&, streampos);
-        virtual void print();
+
+        virtual void print(ostream&);
         friend ostream& operator<<(ostream&, TMedium&);
         
         void set_status(Status);

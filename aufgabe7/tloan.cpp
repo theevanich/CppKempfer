@@ -67,7 +67,7 @@ void TLoan::print()
     cout.fill(' ');
     cout << setw(15) << left << "Ausleihe vom: " << LoanDate << endl;
     cout << "Rueckgabe bis spaetestens: " << Expiration << endl;
-    Medium->print(); cout << endl;
+    cout << *Medium << endl;
     cout << "ausgeliehen von: " << Customer->get_name() << endl;
 }
 

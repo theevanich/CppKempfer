@@ -22,8 +22,10 @@ class TMagazine: public TPrintedMedium
      */
     TMagazine(ifstream&, streampos);
     ~TMagazine();
+
     void load(ifstream&);
-    void print();
+
+    virtual void print(ostream&);
     friend ostream& operator<<(ostream&, TMagazine&);
 };
 

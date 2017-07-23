@@ -112,7 +112,7 @@ void TLibrary::print()
     {
         cout << endl;
         cout << "Medium Nr. " << i+1 << endl;
-        MediumList.at(i)->print();
+        cout << *MediumList.at(i);
         cout << endl;
     }
 }
